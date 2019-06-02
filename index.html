@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+    <h1>傳送訊息</h1>
+    <br>
+    <span>我的訊息</span><input type="text" id="myLine">
+    <br>
+    <br>
+    <button onclick="mySubmit()">傳送訊息</button>
+</body>
+<script>
+    
+    
+    function mySubmit(){
+        var myMessage = document.getElementById('myLine').value;
+        console.log(myMessage);
+        let url = 'https://script.google.com/macros/s/AKfycbyorkTUIAkCiVLZBkmbfbsWxVknArSO_HQNNBgo0nYc6GAqQzU/exec'  //johnny
+        // let url = 'https://script.google.com/macros/s/AKfycbwJ8N0jQiBzVqAFCLW4smxce0BqjHTgt_zOXTxfh_hlB96I3X4C/exec'  //david
+        $.post(url,
+            {msg:myMessage}
+        )
+        
+    }
+    
+</script>
+</html>

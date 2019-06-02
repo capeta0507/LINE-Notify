@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-6" style="border:1px solid black;padding: 10px 10px;">
+                    <form onsubmit="event.preventDefault();">
+                            <h3>傳送需求單</h3>
+                            <br>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="myName">Name</label>
+                                    <input type="text" class="form-control" id="myName" placeholder="Name">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="myEmail">Email</label>
+                                    <input type="email" class="form-control" id="myEmail" placeholder="Email">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="myCompany">Company</label>
+                                    <input type="text" class="form-control" id="myCompany" placeholder="company">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="myTel">Tel</label>
+                                    <input type="tel" class="form-control" id="myTel" placeholder="Tel">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <label for="myDescription">說明</label>
+                                    <textarea class="form-control" id="myDescription"></textarea>
+                                </div>
+                            </div>
+                            <button onclick="mySubmit()" class="btn btn-primary">預約</button>
+                          </form>
+            </div>
+            
+        </div>
+    </div>
+</body>
+<script>
+    // 防止表單送出 event.preventDefault();
+    function mySubmit() {
+        var myDescription = document.getElementById('myDescription').value;
+        var myTel = document.getElementById('myTel').value;
+        var myCompany = document.getElementById('myCompany').value;
+        var myEmail = document.getElementById('myEmail').value;
+        var myName = document.getElementById('myName').value;
+        // var myMessage = myName + myEmail + myCompany + myTel + myDescription
+            var myMessage = ''
+            myMessage += 'M Space 預約表單 \n \n'
+            myMessage += 'Name: ' + myName + '\n'
+            myMessage += 'Email: ' + myEmail + '\n'
+            myMessage += 'Compony: ' + myCompany + '\n'
+            myMessage += 'Tel: ' + myTel + '\n'
+            myMessage += '\n' + myDescription + '\n'
+        console.log('預約成功', myMessage)
+        let url = 'https://script.google.com/macros/s/AKfycbyorkTUIAkCiVLZBkmbfbsWxVknArSO_HQNNBgo0nYc6GAqQzU/exec'
+        $.post(url,
+            {msg:myMessage}
+        )
+    }
+</script>
+</html>
